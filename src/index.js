@@ -13,6 +13,6 @@ getData(url)
 	.then(data => Promise.resolve(sortData(data)))
 	.then(sortedData => {
 		const dataWithAttr = addDataAttribute(sortedData);
-		renderSliderCards(dataWithAttr.slice(0,3), slider);
 		renderRows(dataWithAttr, table);
+		renderSliderCards(dataWithAttr.slice(0,3), slider);
 	});
