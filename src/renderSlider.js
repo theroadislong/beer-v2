@@ -1,5 +1,3 @@
-// создаем карточки для слайдера
-
 const cardTemplate = document.querySelector(".card-template").content;
 
 const createBeer = object => {
@@ -13,9 +11,11 @@ const createBeer = object => {
 	return newBeer;
 };
 
-const renderSliderCards = (objects, destination) => {
+const renderSliderCards = (objects) => {
+	const sliderElements = 3;
+	const destination = document.querySelector(".slider");
 	const fragment = document.createDocumentFragment();
-	objects.forEach(object => fragment.appendChild(createBeer(object)));
+	objects.slice(0, sliderElements).forEach(object => fragment.appendChild(createBeer(object)));
 	destination.appendChild(fragment);
 };
 

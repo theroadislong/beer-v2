@@ -1,5 +1,3 @@
-// создаем таблицу
-
 const rowTemplate = document.querySelector(".row-template").content;
 
 const createRow = object => {
@@ -15,10 +13,11 @@ const createRow = object => {
 	return newRow;
 };
 
-const renderRows = (objects, destination) => {
+const renderTable = (objects) => {
+    const destination = document.querySelector(".table");
 	const fragment = document.createDocumentFragment();
 	objects.forEach(object => fragment.appendChild(createRow(object)));
 	destination.appendChild(fragment);
 };
 
-export default renderRows;
+export default renderTable;

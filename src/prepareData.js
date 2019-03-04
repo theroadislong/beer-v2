@@ -1,3 +1,10 @@
+const prepareData = data => {
+    const sortedData = sortData(data);
+    const dataWithAttribute = addDataAttribute(sortedData);
+    const result = dataWithAttribute;
+    return result;
+}
+
 const sortData = data => {
 	const sortData = [...data].sort(function(a, b) {
 		if (a.attenuation_level < b.attenuation_level) {
@@ -20,4 +27,4 @@ const addDataAttribute = (data) => {
 	return withDataAttribute
 };
 
-export { sortData, addDataAttribute };
+export default prepareData;
