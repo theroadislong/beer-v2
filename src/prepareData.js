@@ -1,21 +1,31 @@
 const prepareData = data => {
-    const sortedData = sortData(data);
+	const sortKey = 'attenuation_level';
+    const sortedData = sortData(data, sortKey);
     const dataWithAttribute = addDataAttribute(sortedData);
     const result = dataWithAttribute;
     return result;
 }
 
-const sortData = data => {
+const sortData = (data, key) => {
+	let isAvailable = true;
+	
+	data.forEach(element => {
+		if (element[key] === undefined) {
+			isAvailable = false;
+		}
+	});
+
 	const sortData = [...data].sort(function(a, b) {
-		if (a.attenuation_level < b.attenuation_level) {
+		if (a[key] < b[key]) {
 			return 1;
 		}
-		if (a.attenuation_level > b.attenuation_level) {
+		if (a[key] > b[key]) {
 			return -1;
 		}
 		return 0;
 	});
-	return sortData;
+	// если ключа не существует то сортировку не делаем и отдаем то что пришло
+	return (isAvailable) ? sortData : data;
 };
 
 const addDataAttribute = (data) => {
